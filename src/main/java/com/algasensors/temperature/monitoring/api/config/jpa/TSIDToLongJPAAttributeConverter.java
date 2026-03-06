@@ -8,12 +8,12 @@ import jakarta.persistence.Converter;
 public class TSIDToLongJPAAttributeConverter implements AttributeConverter<TSID, Long> {
 
     @Override
-    public Long convertToDatabaseColumn(TSID attribute) {
-        return attribute.toLong();
+    public Long convertToDatabaseColumn(TSID tsid) {
+        return tsid == null ? null : tsid.toLong();
     }
 
     @Override
     public TSID convertToEntityAttribute(Long dbData) {
-        return TSID.from(dbData);
+        return dbData == null ? null : TSID.from(dbData);
     }
 }
